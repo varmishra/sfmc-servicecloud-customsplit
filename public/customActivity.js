@@ -110,7 +110,7 @@ define(function (require) {
 		var idField = deFields.length > 0 ? $('#select-id-dropdown').val() : $('#select-id-1').val();
 
 		payload['arguments'].execute.inArguments = [{
-			'serviceCloudId': '{{Contact.Attribute.' + deField + '.' + '.\"' + idField + '\"}}'
+			'serviceCloudId': '{{Contact.Attribute.' + deField + '.\"' + idField + '\"}}'
 		}];
 
 		payload['metaData'] = payload['metaData'] || {};
