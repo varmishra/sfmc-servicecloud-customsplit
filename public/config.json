@@ -18,21 +18,21 @@
 			"url": "https://new-jb-test.herokuapp.com/activity/save",
 			"verb": "POST",
 			"body": "",
-			"useJwt": true,
+			"useJwt": false,
 			"customerKey": "custom split"
 		},
 		"publish": {
 			"url": "https://new-jb-test.herokuapp.com/activity/publish",
 			"verb": "POST",
 			"body": "",
-			"useJwt": true,
+			"useJwt": false,
 			"customerKey": "custom split"
 		},
 		"validate": {
 			"url": "https://new-jb-test.herokuapp.com/activity/validate",
 			"verb": "POST",
 			"body": "",
-			"useJwt": true,
+			"useJwt": false,
 			"customerKey": "custom split"
 		}
 	},
@@ -75,7 +75,7 @@
 			"body": "",
 			"header": "",
 			"format": "json",
-			"useJwt": true,
+			"useJwt": false,
 			"customerKey": "custom split",
 			"timeout": 90000
 		}
