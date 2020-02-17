@@ -8,8 +8,8 @@ const express = require('express');
 const verifyJwt = require(Path.join(__dirname, 'lib', 'jwt.js'));
 // Helper class that handles all the interactions with Salesforce Service Cloud
 // and makes sure open connections are reused for subsequent requests.
-const ServiceCloud = require(Path.join(__dirname, 'lib', 'sfdc.js'));
-const sfdc = new ServiceCloud(Pkg.options.salesforce.serviceCloud);
+//const ServiceCloud = require(Path.join(__dirname, 'lib', 'sfdc.js'));
+//const sfdc = new ServiceCloud(Pkg.options.salesforce.serviceCloud);
 
 const app = express();
 
@@ -28,26 +28,27 @@ app.post('/activity/execute', (req, res) => {
 		}
 
 		if (decoded && decoded.inArguments && decoded.inArguments.length > 0) {
-			let serviceCloudId;
+			//let serviceCloudId;
+			return res.status(200).json({ branchResult: 'veryLikely' });
 
 			// TODO: Read the Service Cloud object's Id from inArguments here and
 			// write it to the serviceCloudId variable
 
 			// Call the function that retrieves desired data from Service Cloud
-			sfdc.retrieveFieldOfObject(serviceCloudId, (err, fieldValue) => {
-				if (err) {
-					console.error(err);
-					return res.status(500).end();
-				}
+			// sfdc.retrieveFieldOfObject(serviceCloudId, (err, fieldValue) => {
+			// 	if (err) {
+			// 		console.error(err);
+			// 		return res.status(500).end();
+			// 	}
 
-				// Check the returned value to make the decision which path should be
-				// followed and return the branchResult accordingly.
-				if (fieldValue === '<FIELD VALUE THAT LEADS RESULT TO PATH 1>') {
-					return res.status(200).json({branchResult: '<KEY FOR PATH 1>'});
-				} else {
-					return res.status(200).json({branchResult: '<KEY FOR PATH 2>'});
-				}
-			});
+			// 	// Check the returned value to make the decision which path should be
+			// 	// followed and return the branchResult accordingly.
+			// 	if (fieldValue === '<FIELD VALUE THAT LEADS RESULT TO PATH 1>') {
+			// 		return res.status(200).json({branchResult: '<KEY FOR PATH 1>'});
+			// 	} else {
+			// 		return res.status(200).json({branchResult: '<KEY FOR PATH 2>'});
+			// 	}
+			// });
 		} else {
 			console.error('inArguments invalid.');
 			return res.status(400).end();
@@ -71,6 +72,5 @@ app.use(express.static(Path.join(__dirname, '..', 'public')));
 
 // Start the server and listen on the port specified by heroku or defaulting to 12345
 app.listen(process.env.PORT || 12345, () => {
-	console.log('Service Cloud customsplit backend is now running!');
+	console.log('Customsplit backend is now running!');
 });
-

@@ -106,10 +106,11 @@ define(function (require) {
 		payload['arguments'] = payload['arguments'] || {};
 		payload['arguments'].execute = payload['arguments'].execute || {};
 
-		var idField = deFields.length > 0 ? $('#select-id-dropdown').val() : $('#select-id').val();
+		var deField = deFields.length > 0 ? $('#select-id-dropdown').val() : $('#select-id').val();
+		var idField = deFields.length > 0 ? $('#select-id-dropdown').val() : $('#select-id-1').val();
 
 		payload['arguments'].execute.inArguments = [{
-			'serviceCloudId': '{{Event.' + eventDefinitionKey + '.\"' + idField + '\"}}'
+			'serviceCloudId': '{{Contact.Attribute.' + deField + '.' + '.\"' + idField + '\"}}'
 		}];
 
 		payload['metaData'] = payload['metaData'] || {};
