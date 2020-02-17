@@ -13,8 +13,8 @@
 		"jsonwebtoken": "^7.4.0"
 	},
 	"options": {
-			"marketingCloud": {
-				"jwtSecret": "custom split"
-			}
+		"marketingCloud": {
+			"jwtSecret": "custom split"
 		}
+	}
 }
